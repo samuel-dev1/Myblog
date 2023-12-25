@@ -66,6 +66,13 @@ class Comment(models.Model):
         ordering = ['-date_posted']
     def __str__(self):
         return str(self.author) + ' coment'
+    
+class Movies(models.Model):
+    pictures = models.ImageField(blank=False, upload_to="Movies")
+    discription = models.TextField()
+    
+    def __str__(self) -> str:
+        return self
 
 
 

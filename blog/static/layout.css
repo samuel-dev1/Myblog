@@ -661,6 +661,7 @@ div.wrapper h6 {
     width: 210px;
     margin: 0 40px 0 0;
     padding: 0;
+    
 }
 
 #footer .flickr li {
@@ -759,6 +760,10 @@ div.wrapper h6 {
     background-color: red;
 }
 
+.sampleimg{
+    height:140px;
+    width: 190px;
+}
 
 
 

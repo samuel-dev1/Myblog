@@ -7,3 +7,9 @@ pytz==2023.3.post1
 six==1.16.0
 sqlparse==0.4.4
 typing_extensions==4.7.1
+
+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
+
+git clone https://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@https://github.com/samuel-dev1/Myblog.git/samuel-dev1/repo.git
+
+git clone https://github.com/samuel-dev1/.git

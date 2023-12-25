@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import BlogHome,ViewHome, Entertaiment, Sport, Politics, Education, SearchMethod
+from .views import BlogHome, Entertaiment, Sport, Politics, Education, SearchMethod
 from .views import details_view, Comments, loginPage, signup, log_out, activate
 urlpatterns = [
       path('login/', loginPage, name="login"),
