@@ -1,0 +1,126 @@
+{% load static %}
+
+
+<!DOCTYPE>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Newserific</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="{% static 'auth.css' %}" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="overall">
+    <div class="wrapper col1">
+    <div id="header">
+      <div class="fl_left">
+        <h1><a href="index.html">Newserific</a></h1>
+        <p>From DoctorCode</p>
+      </div>
+      <div class="fl_right"><h3 id ="time"></h3></div>
+      <br class="clear" />
+    </div>
+    </div>
+
+<div class="wrapper col2">
+    <div id="topbar">
+      <!-- HTML -->
+      <div id="topnav">
+        <ul>
+          <li class="active"><a href="{% url 'blog' %}">News</a></li>
+          <li><a class="active" href="{% url 'Education' 'Education' %}">Education</a></li>
+          <li><a class="active" href="{% url 'Entertaiment' 'Entertainmnt' %}">Entertainment</a></li>
+          <li><a class="active" href="{% url 'Politics' 'Politics' %}">politics</a></li>
+          <li><a class="active" href="{% url 'Sport' 'Sport' %}">Sport</a></li>
+          <li><a class="active" href="#">Contact</a>
+            <ul>
+              <li><a href="https://wa.me/8130423221?text=Hey DooctorCode I Contacted you from Newserific
+              
+                ">WhatsApp</a></li>
+              <li><a href="https://api.twitter.com/1.1/direct_messages">Twitter</a></li>
+              <li><a href="mailto:samuelyyyy257@gmail.com">Gmail</a></li>
+            </ul>
+          </li>
+          <li class="last"><a href="#">Authentication</a>
+            <ul>
+              <li><a href="
+                {% url 'login'  %}
+                ">Login</a></li>
+              <li><a href="
+                {% url 'signup'  %}
+                ">Register</a></li>
+              <li><a href="#" onclick="alert('All DoctorCode Job is closed for now')">news Caster</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div id="search">
+        <form action="{% url 'search' %}" method="get">
+          {% csrf_token %}
+          <fieldset>
+            <legend>Site Search</legend>
+            <input type="text" value="Search Our Website&hellip;" name="seachpanel"
+              onfocus="this.value=(this.value=='Search Our Website&hellip;')? '' : this.value ;" />
+            <input type="submit" name="go" id="go" value="Search" />
+          </fieldset>
+        </form>
+      </div>
+      <br class="clear" />
+    </div>
+    <!-- header finsihed here -->
+  </div>
+
+</div>
+
+{% block auth %}
+
+
+{% endblock %}
+  <!-- JavaScript -->
+
+<script>
+
+  const yo  =document.getElementById("time");
+
+  function updateClock(){
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.toLocaleString('en-US', {month:'long'})
+    const day = date.getDate();
+    const hour =  date.getHours();
+    const minute = date.getMinutes();
+    const secound = date.getSeconds();
+    const amOrPm =hour >= 12 ? "PM" : "AM";
+    yo.innerText = `Today's ${month} ${day}, ${year}, at ${hour}:${minute}:${secound} ${amOrPm}`
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var links = document.querySelectorAll("#topnav li a");
+  
+        links.forEach(function (link) {
+            link.addEventListener("click", function () {
+                // Remove 'clicked' class from all links
+                links.forEach(function (l) {
+                    l.classList.remove("clicked");
+                });
+  
+                // Add 'clicked' class to the clicked link
+                this.classList.add("clicked");
+            });
+        });
+    });
+  </script>
+</body>
+</html>

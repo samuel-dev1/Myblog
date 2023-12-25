@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+
+
+{% block post %}
+<h4 style="text-align:center ;">{{product.count}} product found</h4>
+
+<div id="hpage_latestE">
+  {% for x in product %}
+  <div>
+      <ul>
+          <li>
+              <img  style="object-fit: cover;" src="{{ x.image.url }}" alt="" />
+              <p>{{ x.title }}</p>
+              <p>{{ x.discriptions|truncatechars:150 }}</p>
+              <p class="readmore"><a href="{% url 'readmore' x.slug %}">Continue Reading &raquo;</a></p>
+          </li>
+      </ul>
+      <br class="clear" />
+    </div>
+
+{% empty %}
+<center>
+  <div class="gallery">
+    <h2>nothin found on {{elements}}</h2>
+    </div>
+</center>
+
+    {% endfor %}
+  </div>
+
+
+  <div class="wrapper col7">
+    <div id="copyright">
+      <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Newserific.com</a></p>
+      <p class="fl_right">@<a target="_blank" href="http://www.os-templates.com/"
+          title="Free Website Templates">DoctorCode</a></p>
+      <br class="clear" />
+    </div>
+  </div>
+  
+
+  {% endblock %}
+  {% block data %}
+
+  {% endblock %}

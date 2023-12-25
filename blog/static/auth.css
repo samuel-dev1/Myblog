@@ -1,0 +1,58 @@
+@import url('layout.css');
+
+body{
+    background-color:rgb(8, 8, 8);
+height: 100vh;
+}
+h2{
+    color: #BFE009;
+}
+
+#formauth label{
+    color: #BFE009;
+    font-size: 1em;
+    display: block;
+    clear: right;
+    padding: 10px;
+}
+#formauth{
+    width: 50%;
+    margin: auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+#formauth input{
+    padding: 10px;
+    width: 100%;
+}
+
+.bttn{
+    padding:10px;
+    background-color:#839B05;;
+    border:1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+color:white;
+width: 200px;
+transition: 3s;}
+
+.bttn:hover{
+    background-color: white;
+    color: #BFE009;
+}
+
+
+@media screen and (max-width:768px) {
+    h2{
+        font-size: 0.5em;
+
+    }
+    #formauth{
+        width: 90%;
+        margin:auto;
+        display: block;
+    }
+    
+}

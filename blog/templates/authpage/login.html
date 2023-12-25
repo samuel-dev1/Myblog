@@ -1,0 +1,42 @@
+{% extends 'base2.html' %}
+
+
+
+{% block auth %}
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li style="color:lightgreen" {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message|capfirst}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form id="formauth">
+    <center><h3>Login</h3></center>
+
+<fieldset>
+    {% csrf_token %}
+  {{f}}
+</fieldset>
+<button type ="submit" class="bttn" id="logN">Login <i class="fa fa-sign-in"></i></button>
+<h6>Don't have account click<a href=""> Here </a></h6>
+<h6>Forgot password? Click<a href="">  here</a></h6>
+
+</form>
+
+<div class="wrapper col7">
+    <div id="copyright">
+      <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Newserific.com</a></p>
+      <p class="fl_right">@<a target="_blank" href="http://www.os-templates.com/"
+          title="Free Website Templates">DoctorCode</a></p>
+      <br class="clear" />
+    </div>
+  </div>
+
+ 
+
+    
+
+{% endblock %}

@@ -1,0 +1,155 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- ####################################################################################################### -->
+
+<!-- ####################################################################################################### -->
+
+
+{% block post %}
+
+<div class="wrapper col4">
+  <div id="container">
+    <div id="content">
+      <div id="featured_post"><img class="bigborder" style="object-fit:cover;" src="{{postbanner.image.url}}" alt="" />
+        <p>{{postbanner.title}} <a href="{% url 'readmore' postbanner.slug %}">visit post in a new Tap</a>.</p>
+        <p>{{postbanner.discriptions|truncatechars:300}}<a
+            href="{% url 'readmore' postbanner.slug %}">Read more</a>.</p>
+      </div>
+      
+      <div id="hpage_latest">
+        {% for x in posts|slice:"4" %}
+        <div class="myhouse">
+            <ul>
+                <li>
+                    <img  style="object-fit: cover;" src="{{ x.image.url }}" alt="" />
+                    <p>{{ x.title }}</p>
+                    <p>{{ x.discriptions|truncatechars:150 }}</p>
+                    <p class="readmore"><a href="{% url 'readmore' x.slug %}">Continue Reading &raquo;</a></p>
+                </li>
+            </ul>
+          </div>
+        {% endfor %}
+        <br class="clear" />
+    </div>
+    
+    </div>
+    <div id="column">
+
+  {% for post in posts %}
+  {% if forloop.counter <= 10 and forloop.counter > 4 %}
+  <ul id="latestnews">
+    <li><img style="object-fit:cover ;" height="90" width="150" src="{{post.image.url}}" alt="" />
+      <p><strong><a href="{% url 'readmore' post.slug %}">{{post.title}}</a></strong> 
+        {{post.discriptions|truncatechars:100}}
+      </p>
+    </li>
+  </ul>
+  {% endif %}
+{% endfor %}
+
+     
+    </div>
+    <br class="clear" />
+  </div>
+  <br class="clear" />
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col5">
+  <div class="gallery">
+    <h2>Latest Movies</h2>
+    <ul><div class="post">
+      {% for x in posts %}
+      
+      <li><a href="{% url 'readmore' x.slug %}"><img height="90" width="150" style="object-fit:cover ;" src="{{x.image.url}}" alt="" /></a></li>
+    
+      {% endfor %}
+    </div>
+    </ul>
+    <br class="clear" />
+  </div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+{% block data %}
+
+
+
+<div class="wrapper col6">
+
+  <div id="footer">
+   <div class="gridd">
+    <div class="footbox twitter">
+      <h2>Contact Us</h2>
+      <ul>
+        
+        <li><a href="https://api.twitter.com/1.1/direct_messages">Twitter</a></li>
+        <li><a href="mailto:samuelyyyy257@gmail.com">Gmail</a></li>
+      
+        <li><a href="https://wa.me/8130423221?text=Hey DooctorCode I Contacted you from Newserific">WhatsApp</a></li>
+      
+      </ul>
+    </div>
+    <div class="footbox flickr">
+      <h2>Latest From DoctorCode</h2>
+      <ul>
+        <li><a href="#"><img src="images/demo/80x80.gif" alt="" /></a></li>
+        <li><a href="#"><img src="images/demo/80x80.gif" alt="" /></a></li>
+        <li><a href="#"><img src="images/demo/80x80.gif" alt="" /></a></li>
+        <li><a href="#"><img src="images/demo/80x80.gif" alt="" /></a></li>
+        <li><a href="#"><img src="images/demo/80x80.gif" alt="" /></a></li>
+        <li><a href="#"><img src="images/demo/80x80.gif" alt="" /></a></li>
+      </ul>
+      <br class="clear" />
+    </div>
+    <div class="footbox posts">
+      <h2>Latest Blog Posts</h2>
+      {% for x in posts|slice:"9" %}
+
+      <div class="mybestgrid">
+      <ul>
+        
+        <li><a href="{% url 'readmore' x.slug %}">{{x.title}}</a></li>
+
+      </ul>
+    </div>
+      {% endfor %}
+    </div>
+    <div class="footbox banners last">
+      <h2>Advertise Here</h2>
+      <ul>
+        {% for adverts in advert %}
+        <li><a href="#"><img class="sampleimg" style="object-fit:cover ;"src="{{adverts.image.url}}" alt="{{adverts.title}}" /></a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+
+</div> 
+</div>
+
+<!-- ####################################################################################################### -->
+<div class="wrapper col7">
+  <div id="copyright">
+    <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Newserific.com</a></p>
+    <p class="fl_right">@<a target="_blank" href="http://www.os-templates.com/"
+        title="Free Website Templates">DoctorCode</a></p>
+    <br class="clear" />
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+<!-- ####################################################################################################### -->
+
+
+

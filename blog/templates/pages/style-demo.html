@@ -1,0 +1,161 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block post %}
+
+<!-- ####################################################################################################### -->
+
+<!-- ####################################################################################################### -->
+<div class="wrapper col3">
+  <div id="breadcrumb">
+    <ul>
+      <li class="first">You Are Here</li>
+      <li>&#187;</li>
+      <li><a href="{% url 'blog' %}">Home</a></li>
+      <li>&#187;</li>
+      <li><a href="{% url object.catgories object.catgories %}">{{object.catgories}}</a></li>
+      <li>&#187;</li>
+      <li><a href="{% url 'readmore' object.slug %}">{{object.title}}</a></li>
+      
+    </ul>
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col4">
+  
+  <div id="container">
+    <div id="content">
+      <center> <h1 style="padding: 8px;">- {{object.title|upper}}</h1></center>  
+      <center>
+      <img class="imgr" 
+      style="object-fit:cover ; border-radius: 5px;"
+      src="{{object.image.url}}" alt="" />
+    </center>    
+      <p style="font-size:16px ;text-align: justify ;">{{object.discriptions}}</p>
+    
+
+      <div id="comments">
+        <h2>Comments</h2>
+        <ul class="commentlist">
+          {% for x in comment %}
+          <li class="comment_odd">
+            <div class="author"><img class="avatar" src="{{x.author.profile.profile_picture.url}}" width="32" height="32" alt="" /><span class="name"><a href="#">{{x.author.username.capitalize}}</a></span> <span class="wrote">wrote:</span></div>
+            <div class="submitdate"><a href="#">{{x.date_posted}}</a></div>
+            <p>{{x.content}}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <h2>Write A Comment</h2>
+      <div id="respond">
+        <form action="{% url 'comment' %}" method="post">
+          {% csrf_token %} 
+          {% if request.user.is_authenticated %}
+        {{pass}}
+          {% else %}
+          <p>
+            <label>
+              Login is Required
+            </label>
+          </p>
+          <p>
+            <label for="email"><a href="">Signup instead</a><small></small></label>
+          </p>
+          {% endif %}
+          <p>
+            <textarea name="comment" id="comment" cols="100%" rows="10"></textarea>
+            <label for="comment" style="display:none;"><small>Comment (required)</small></label>
+          </p>
+          <p>
+            <button class="btn"  name="submit" type="submit" id="submit" value="{{object.id}}">Comment</button>
+            &nbsp;
+            <input  name="reset" type="reset" id="reset" tabindex="5" value="Clear my Text" />
+          </p>
+
+        </form>
+      </div>
+    </div>
+    <div id="column">
+      <div class="subnav">
+        <h2>Quick Navigation</h2>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="#">Sport</a>
+          </li>
+          <li><a href="#">Politics</a>
+          </li>
+          <li><a href="#">Entertaiment</a>
+          <li><a href="#">Education</a></li>
+        </ul>
+      </div>
+      <div class="holder">
+        <h2 class="title"><img sizes="50" height="50" style="object-fit:cover;" src="{{object1.image.url}}" alt="" />{{object1.title|upper}}</h2>
+        <p>{{object1.discriptions|truncatechars:150}}</p>
+        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+      </div>
+      <div id="featured">
+        <ul>
+          <li>
+            {% for i in object2 %}
+            {% if forloop.counter == 2 %}
+            <h2>{{i.title}}</h2>
+            <p class=""><img height="50" width="50" style="object-fit:cover" src="{{i.image.url}}" alt="" /></p>
+            <p>{{i.discriptions|truncatechars:300}}}</p>
+            <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+            {% endif %}
+            {% endfor %}
+          </li>
+        </ul>
+      </div>
+      <div class="holder">
+        <h2> Related Post </h2>
+        <p>The following related post are based on Category!
+        </p>
+        <ul>
+          {% for i in object2 %}
+          <li><a href="#">{{i.title}}</a></li>
+          <li style='list-style: none;'>{{i.discriptions|truncatechars:50}}</li>
+          {% endfor %}
+        </ul>
+        {% for y in object2|slice:'1' %}
+        <p>{{y.discriptions|truncatechars:300}}</p>
+        <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        {% endfor %}
+      </div>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function () {
+    $(document).on('click', '#commSend', function (event) {
+      event.preventDefault();
+
+      $.ajax({
+
+        type: 'POST',
+        url: '{% url "comment" %}',
+        data: {
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+          'submit_btt': $("comment").val(),
+          'comment': $('#submit').val(),
+        },
+        success: function (response) {
+          (response)
+        },
+        error: function (rs, e) {
+        },
+      });
+      location.reload(true);
+    });
+  })
+
+
+</script>
+
+{% endblock %}
+
+
