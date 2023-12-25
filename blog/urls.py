@@ -1,7 +1,7 @@
 
 from django.urls import path
 from .views import BlogHome, Entertaiment, Sport, Politics, Education, SearchMethod
-from .views import details_view, Comments, loginPage, signup, log_out, activate
+from .views import details_view, Comments, loginPage, signup, log_out, activate, password_reset_request
 urlpatterns = [
       path('login/', loginPage, name="login"),
     path('logout/', log_out, name="logout"),

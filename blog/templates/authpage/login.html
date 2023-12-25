@@ -4,16 +4,25 @@
 
 {% block auth %}
 
+{% if request.user.is_authenticated %}
+
+
+
+<h5><a href="">You are signed in as {{request.user}}</a></h5>
+
+{% else %}
 
 {% if messages %}
+<center>
 <ul class="messages">
     {% for message in messages %}
-    <li style="color:lightgreen" {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message|capfirst}}</li>
+    <li style="color:lightgreen; font-size: small; list-style: none;" {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message|capfirst}}</li>
     {% endfor %}
 </ul>
+</center>
 {% endif %}
 
-<form id="formauth">
+<form id="formauth" method="post">
     <center><h3>Login</h3></center>
 
 <fieldset>
@@ -36,7 +45,7 @@
   </div>
 
  
-
+{% endif %}
     
 
 {% endblock %}

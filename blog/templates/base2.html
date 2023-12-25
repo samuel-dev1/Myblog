@@ -46,6 +46,10 @@
               <li><a href="mailto:samuelyyyy257@gmail.com">Gmail</a></li>
             </ul>
           </li>
+          {% if request.user.is_authenticated %}
+          <li class="last"><a href="">{{request.user}}</a></li>
+        
+          {% else %}
           <li class="last"><a href="#">Authentication</a>
             <ul>
               <li><a href="
@@ -55,8 +59,7 @@
                 {% url 'signup'  %}
                 ">Register</a></li>
               <li><a href="#" onclick="alert('All DoctorCode Job is closed for now')">news Caster</a></li>
-            </ul>
-          </li>
+                {% endif %}
           
         </ul>
       </div>

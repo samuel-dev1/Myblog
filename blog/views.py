@@ -39,7 +39,6 @@ def BlogHome(request):
         context = {"null": None}
     return render(request, "index.html", context)
 
-
 def password_reset_request(request):
     if request.method == "POST":
         password_reset_form = PasswordResetForm(request.POST)
@@ -90,12 +89,13 @@ def activate(request, uidb64, token):
     else:
         return HttpResponse('Activation link is invalid!')
 
-
 def loginPage(request):
     """
      for login in user -> django auth+ usercreateform
     """
     f = loginform()
+ 
+   
     if request.method == "POST":
         username = request.POST.get("username")
         convername = username.lower()
@@ -105,7 +105,7 @@ def loginPage(request):
             if user.is_active:
                 login(request, user)
                 messages.success(request, "login successful")
-                return redirect('home')
+                return redirect('blog')
             else:
                 messages.error(
                     request, "login error? check details or try forget password")
@@ -154,7 +154,7 @@ def Entertaiment(request, element):
     try:
         posts = UpdatePost.objects.all().order_by("-date_posted")
 
-        elements = UpdatePost.objects.filter(catgories=element)
+        elements = UpdatePost.objects.filter(catgories=element).order_by("-date-posted")
         paginator = Paginator(elements, 15)
         page = request.GET.get('page')
         try:
@@ -171,7 +171,7 @@ def Politics(request, element):
     try:
         posts = UpdatePost.objects.all().order_by("-date_posted")
 
-        elements = UpdatePost.objects.filter(catgories=element)
+        elements = UpdatePost.objects.filter(catgories=element).order_by("-date_posted")
         paginator = Paginator(elements, 15)
         page = request.GET.get('page')
         try:
@@ -189,7 +189,7 @@ def Sport(request, element):
     try:
         posts = UpdatePost.objects.all().order_by("-date_posted")
 
-        elements = UpdatePost.objects.filter(catgories=element)
+        elements = UpdatePost.objects.filter(catgories=element).order_by("-date_posted")
         paginator = Paginator(elements, 15)
         page = request.GET.get('page')
         try:
@@ -206,8 +206,8 @@ def Education(request, element):
     try:
         posts = UpdatePost.objects.all().order_by("-date_posted")
 
-        elements = UpdatePost.objects.filter(catgories=element)
-        paginator = Paginator(elements, 3)
+        elements = UpdatePost.objects.filter(catgories=element).order_by('-date_posted')
+        paginator = Paginator(elements, 15)
         page = request.GET.get('page')
         try:
             paginated_data = paginator.page(page)
