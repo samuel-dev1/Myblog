@@ -2,6 +2,7 @@
 from django.urls import path
 from .views import BlogHome, Entertaiment, Sport, Politics, Education, SearchMethod
 from .views import details_view, Comments, loginPage, signup, log_out, activate, password_reset_request
+from .views import Movies, Read, NewsCaster, Create
 urlpatterns = [
       path('login/', loginPage, name="login"),
     path('logout/', log_out, name="logout"),
@@ -15,4 +16,8 @@ urlpatterns = [
         path('search',SearchMethod, name="search" ),
         path("read/<slug:slug>", details_view, name="readmore"),
         path("comment",Comments, name="comment"),
+        path("movies",Movies, name="novies"),
+        path(r"read/<str:link>", Read, name="read"),
+        path(r'News/', NewsCaster, name="cast"),
+        path(r'create/',Create, name="create")
 ]

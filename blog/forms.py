@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-
+from .models import UpdatePost, Profile
 
 class SignUpForm(UserCreationForm):
 
@@ -104,4 +104,13 @@ class loginform(forms.Form):
         else:
             emails = email.lower()
 
-
+class UpdateForm(forms.ModelForm):
+        class Meta:
+            model =UpdatePost
+            fields = ["title","catgories","image", "discriptions", ]
+            widgets = {
+                "title":forms.TextInput(
+                    attrs={"placeholder":"Title here"}
+                ),
+                "discriptions": forms.CharField(widget=forms.Textarea(attrs={'class': 'ckeditor'}))
+            }

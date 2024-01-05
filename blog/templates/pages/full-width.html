@@ -3,6 +3,7 @@
 
 
 {% block post %}
+<center>
 <div id="hpage_latestE">
   {% for x in post %}
   <div>
@@ -10,7 +11,7 @@
           <li>
               <img  style="object-fit: cover;" src="{{ x.image.url }}" alt="" />
               <p>{{ x.title }}</p>
-              <p>{{ x.discriptions|truncatechars:150 }}</p>
+              <p class="para">{{ x.discriptions|truncatechars:150 }}</p>
               <p class="readmore"><a href="{% url 'readmore' x.slug %}">Continue Reading &raquo;</a></p>
           </li>
       </ul>
@@ -25,6 +26,7 @@
 
     {% endfor %}
   </div>
+</center>
   <center>
     <div style="
     padding:10px;
@@ -35,11 +37,9 @@
           <a href="?page=1">&laquo; First</a>
           <a href="?page={{ post.previous_page_number }}">Previous Page</a>
       {% endif %}
-  
       <span>
           Page {{ post.number }} of {{ post.paginator.num_pages }}.
       </span>
-  
       {% if post.has_next %}
           <a href="?page={{ post.next_page_number }}">Next</a>
           <a href="?page={{ post.paginator.num_pages }}">Last &raquo;</a>

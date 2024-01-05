@@ -47,7 +47,7 @@
             </ul>
           </li>
           {% if request.user.is_authenticated %}
-          <li class="last"><a href="">{{request.user}}</a></li>
+          <li class="last"><a href="{% url 'cast'  %}">{{request.user}}</a></li>
         
           {% else %}
           <li class="last"><a href="#">Authentication</a>
@@ -84,6 +84,10 @@
 
 {% block auth %}
 
+
+{% endblock %}
+
+{% block caster %}
 
 {% endblock %}
   <!-- JavaScript -->

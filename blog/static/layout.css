@@ -16,7 +16,7 @@ body {
     /* Use em for font size */
     font-family: Georgia, "Times New Roman", Times, serif;
     color: #E5E5E5;
-    background-color: #151515;
+    background-color:black;
     overflow-x: hidden;
     width: 100%;
 }
@@ -392,6 +392,8 @@ div.wrapper h6 {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+
+
 /* Comments */
 
 #comments {
@@ -623,6 +625,10 @@ div.wrapper h6 {
     border: 1px solid #BFE009;
     clear: left;
 }
+.para{
+    width: 98%;
+    text-align: justify;
+}
 
 /* ----------------------------------------------Footer------------------------------------- */
 
@@ -754,6 +760,58 @@ div.wrapper h6 {
 
 }
 
+/* here is the secound wrapper */
+
+#hpage_latestD li {
+    display: block;
+    float: left;
+    width: 200px;
+    margin: 0 15px 0 0;
+    padding: 10px;
+}
+
+#hpage_latestD ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline;
+}
+
+#hpage_latestD li {
+    display: block;
+    float: left;
+    width: 200px;
+    margin: 0 15px 0 0;
+    padding: 10px;
+}
+
+#hpage_latestD li.last {
+    margin-right: 0;
+}
+
+#hpage_latestD img {
+    margin: 0;
+    padding: 4px;
+    border: 1px solid #BFE009;
+    height: 90;
+    width: 150;
+
+}
+
+#hpage_latestD .readmore {
+    text-align: left;
+
+}
+
+#hpage_latestD {
+    width: 60%;
+    margin: auto;
+    display: grid;
+    gap: 3px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+
 .authWraper {
     width: 50%;
     margin: auto;
@@ -766,8 +824,54 @@ div.wrapper h6 {
 }
 
 
+.formcreate {
+    font-family: 'Arial', sans-serif;
+    margin: auto;
+    margin: 5px;
+    padding: 5px;
+    width: 60%;
+    margin: auto;
+
+}
+
+.formcreateF {
+    display: block;
+
+}
 
 
+.formcreateF input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.formcreateF label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.formcreateF select {
+    width: fit-content;
+    padding: 5px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 1px solid rgba(128, 128, 128, 0.321);
+    transition: border-color 0.3s ease-in-out;
+    color: white;
+    background-color: #103a56;
+}
+
+#id_title{
+    padding: 10px;
+    width: 60%;
+}
 
 
 
@@ -786,10 +890,9 @@ div.wrapper h6 {
 @media screen and (max-width:700px) {
 
     body {
-        padding: 0.5em;
-        /* Adjust padding for smaller screens */
+        padding:7px;
+
         font-size: 0.9em;
-        /* Adjust font size for smaller screens */
     }
 
     * {
@@ -869,7 +972,8 @@ div.wrapper h6 {
     }
 
     #time {
-        font-size: 0.7em;
+        font-size:14px;
+        color: #BFE009;
         margin: 0px;
         padding: 0px;
     }
@@ -878,6 +982,7 @@ div.wrapper h6 {
         display: block;
         float: right;
         width: fit-content;
+        height: 30px;
 
     }
 
@@ -1297,25 +1402,22 @@ div.wrapper h6 {
         margin: 0;
         padding: 4px;
         border: 1px solid #BFE009;
-        height: 90;
-        width: 150;
+        height: 270px;
+        width: 98%;
 
     }
 
     #hpage_latestE .readmore {
         text-align: left;
+        padding: 0;
+        margin: 0;
 
     }
 
     #hpage_latestE {
-        width: 99%;
-        margin: auto;
-        display: grid;
-        gap: 3px;
-        padding: 10px;
-        overflow-x: hidden;
-        grid-template-columns: 1fr 1fr;
-
+        float: none;
+        display: block;
+        width: 98%;
     }
 
     #featured {
@@ -1324,6 +1426,70 @@ div.wrapper h6 {
         margin: auto;
         margin-bottom: 20px;
     }
+
+
+    /* here is the secound wrapper */
+
+    #hpage_latestD li {
+        display: block;
+        float: left;
+        width: 250px;
+        margin: 0 15px 0 0;
+        padding: 10px;
+    }
+
+    #hpage_latestD ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: inline;
+    }
+
+    #hpage_latestD li {
+        display: block;
+        float: left;
+        width: fit-content;
+        text-align: justify;
+        margin: 0 15px 0 0;
+        padding: 10px;
+    }
+
+    #hpage_latestD li.last {
+        margin-right: 0;
+    }
+
+    #hpage_latestD img {
+        margin: 0;
+        padding: 4px;
+        border: 1px solid #BFE009;
+        height: 270px;
+        width: 98%;
+
+    }
+
+    #hpage_latestD .readmore {
+        text-align: left;
+        padding: 0;
+        margin: 0;
+
+    }
+
+    #hpage_latestD {
+        float: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 98%;
+    }
+
+    #featured {
+        display: block;
+        width: 99%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+
+    /* end of it here */
 
     #column #featured ul,
     #column #featured h2,
@@ -1417,7 +1583,41 @@ div.wrapper h6 {
 
     .sampleimg{
         height:150px;
-         width:100%;
+         width:98%;
+    }
+    .para{
+        width: 98%;
+        text-align: justify;
+    }
+
+
+    .formcreate {
+        width: 98%;
+        margin-right: auto;
+        margin-left:auto;
+    
+    }
+
+    .formcreateF input {
+        width: 98%;
+        margin: auto;
+    }
+
+    [type="submit"] {
+        font-size: small;
+        background-color: white;
+        color: black;
+        border: 1px solid gray;
+        transition: 3s;
+    }
+
+    .formcreateF a {
+        font-size: small;
+        transition: 3s;
+    }
+
+    .formcreateF a:hover {
+        background-color: var(--hoverBuutoncolor);
     }
 
 

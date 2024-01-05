@@ -1,0 +1,69 @@
+
+{% extends 'base2.html' %}
+{% load static %}
+
+
+
+{% block caster %}
+
+<center>
+    <h2> Hello, {{request.user.username}} welcome back </h2>
+    <p>~{{post.count}} total Post, 
+
+        {% if post.count <= 10 %}
+            <i> sabi partners</i>
+        {% endif %}
+
+        {% if post.count >= 100 %}
+        <i>our trustee</i>
+        {% endif %}
+    </p>
+    {% for i in daily %}
+    <marquee>{{i.message|upper}}</marquee>
+    {% endfor %}
+<img style="
+border: 1px solid #BFE009;
+object-fit: cover;
+border-radius: 10px;
+" height="150" width="150" src="{{profile.profile_picture.url }}" />
+    {{profile.user.first_name}}
+    {{profile.user.last_name}}
+    {{profile.user}}
+<div>
+    <button onclick="window.location.href= '{% url 'create' %}' " class="bttn">Publish News</button>
+    <button disabled style="color:black; background-color:white" class="bttn">Chat with Agent</button>
+</div>
+
+<p>Kindly Note the following before applying to the task</p>
+<ui style="text-align:left; padding:3px">
+    <li>
+        Any News copied from any other <b>site</b> will automatically be deleted
+        and your partners will us will automatically be terminated
+    </li>
+    <li>
+        It takes 10-15 min to veried your post immedately your post is 
+        verified you will be paid in full in your default account.
+    </li>
+    <li>
+        For any complains you can text us one chat us by the help line above
+    </li>
+</ui>
+<div>
+    Please kindly verify your daily task by clicking 
+    
+    <button class="bttn">Here</button>
+</div>
+<p style="color:red ;">Click on your profile to edit your details</p>
+</center>
+
+<div class="wrapper col7">
+    <div id="copyright">
+      <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Newserific.com</a></p>
+      <p class="fl_right">@<a target="_blank" href="http://www.os-templates.com/"
+          title="Free Website Templates">DoctorCode</a></p>
+      <br class="clear" />
+    </div>
+  </div>
+{% endblock %}
+
+

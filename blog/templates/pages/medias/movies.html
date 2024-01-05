@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+
+
+{% block post %}
+<center>
+    <h2 style="
+    font-size: medium;
+    font-weight: bold;
+    color: rgba(211, 211, 211, 0.463);
+    ">Movies</h2>
+<div id="hpage_latestD">
+ 
+    {% for x in data %}
+    <div>
+        <ul>
+            <li>
+                <img  style="object-fit: cover;" src="{{ x.image }}" alt="" />
+                <p class="para">{{ x.discriptions|truncatechars:150 }}</p>
+                <p class="readmore"><a href="">{{ x.title }}&raquo;</a></p>
+                
+            </li>
+        </ul>
+        <br class="clear" />
+      </div>
+  {% empty %}
+<center>
+  <div class="gallery">
+    <h2>nothin found on Movies</h2>
+    </div>
+</center>
+
+    {% endfor %}
+  </div>
+</center>
+  <center>
+    <div style="
+    padding:10px;
+    width: 60%;
+    background-color: black;
+    " class="pagination-links">
+      {% if data.has_previous %}
+      <a href="?page=1">&laquo; First</a>
+      <a href="?page={{ data.previous_page_number }}">Previous Page</a>
+  {% endif %}
+  
+  <span>
+      Page {{ data.number }} of {{ data.paginator.num_pages }}.
+  </span>
+  
+  {% if data.has_next %}
+      <a href="?page={{ data.next_page_number }}">Next</a>
+      <a href="?page={{ data.paginator.num_pages }}">Last &raquo;</a>
+  {% endif %}
+  <h3>Movies are updated Not stored</h3>
+  </div>
+  <div class="wrapper col7">
+    <div id="copyright">
+      <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Newserific.com</a></p>
+      <p class="fl_right">@<a target="_blank" href="http://www.os-templates.com/"
+          title="Free Website Templates">DoctorCode</a></p>
+      <br class="clear" />
+    </div>
+  </div>
+  
+
+  {% endblock %}
+  {% block data %}
+
+  {% endblock %}
+
+
+

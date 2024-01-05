@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, get_list_or_404, get_object_or_404
-from .models import UpdatePost, Advertisement, Comment
+from .models import UpdatePost, Advertisement, Comment, DailyTask, Profile
 from django.db.models.query_utils import Q
-from .forms import SignUpForm, loginform
+from .forms import SignUpForm, loginform, UpdateForm
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -17,7 +17,9 @@ from django.utils.encoding import force_bytes
 from django.utils.encoding import force_str
 from .tokens import account_activation_token
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-# Create your views here.
+from bs4 import BeautifulSoup
+import requests
+import json
 
 
 def BlogHome(request):
@@ -153,8 +155,7 @@ def SearchMethod(request):
 def Entertaiment(request, element):
     try:
         posts = UpdatePost.objects.all().order_by("-date_posted")
-
-        elements = UpdatePost.objects.filter(catgories=element).order_by("-date-posted")
+        elements = UpdatePost.objects.filter(catgories=element).order_by("-date_posted")
         paginator = Paginator(elements, 15)
         page = request.GET.get('page')
         try:
@@ -243,3 +244,72 @@ def Comments(request):
             return HttpResponse("working")
         else:
             return HttpResponse("does working")
+
+def Movies(request):
+    url = "https://www.fzmovies.ng/"
+    response = requests.get(url)
+    if response.status_code == 200:
+        soap = BeautifulSoup(response.text, 'html.parser')
+        find_text = soap.find_all("div", class_="post-filter-inside-wrap")
+        data = []
+        for item in find_text:
+            link1 = item.find("a")['href']
+            image = item.find('img')['src']
+            title = item.find('img')['alt']
+            title_c = str(title)
+            title_c.replace("Download"," ")
+            entry_data = {
+                "link": link1,
+                "image": image,
+                "title":title_c
+            }
+            data.append(entry_data)
+
+        paginator = Paginator(data, 6)
+        page = request.GET.get('page')
+        try:
+            paginated_data = paginator.page(page)
+        except PageNotAnInteger:
+            paginated_data = paginator.page(1)
+        except EmptyPage:
+            paginated_data = paginator.page(paginator.num_pages)
+        return render(request, "pages/medias/movies.html", {'data': paginated_data})
+    else:
+        # Handle the case when the request to the website fails
+        return render(request, "pages/error.html", {'error_message': 'Failed to fetch data from the website'})
+
+@login_required
+def NewsCaster(request):
+    dailytask = DailyTask.objects.all()
+    alltask = UpdatePost.objects.filter(user= request.user)
+    profile =  Profile.objects.get(user= request.user)
+    return render(request, "pages/employee/employee.html",{"daily":dailytask,"profile":profile,"post":alltask})
+
+@login_required
+def Create(request):
+    form = UpdateForm()
+    if request.method =="POST":
+        form =UpdateForm(request.POST, request.FILES) 
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = request.user
+            obj.save()
+            return redirect("home")
+    else:
+        form = UpdateForm()
+    return render (request,"pages/form/upload.html",{"form":form} )
+
+
+def Read(request, link):
+    
+    # y = requests.get(movie_url).text
+    # soup = BeautifulSoup(y, 'lxml')
+    # find_p = soup.find("iframe", class_="BLOG_video_class")['src']
+    # image = soup.find('div', class_='post-body').find('a')['href']
+    # download_link = soup.find('div', class_='post-body').find('a', rel='nofollow', target='_blank')['href']
+    
+    return render(request, "pages/medias/contine.html" )
+# {"find_p": find_p, "image": image, "download": download_link}
+
+
+

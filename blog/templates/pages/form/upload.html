@@ -1,0 +1,38 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% load static %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+
+{% block post %}
+<div class="formcreate">
+    <center><h2>Create New Post</h2></center>
+    <center>
+    <form method="post" enctype="multipart/form-data" class="formcreateF" >
+        {% csrf_token %}
+        {{ form.media }}
+        {{form.as_p}}
+        <div class="bttn"><button style="
+            border:none;text-decoration:none; background-color:#51910778 ; color: white;padding: 5px; border-radius: 5px; cursor: pointer;
+            " type="submit" class="bttn"> Submit And Continue</button>
+        <button type="reset" style="border:none;text-decoration:none; background-color:#3498db82 ; color: white;padding: 5px; border-radius: 5px; cursor: pointer;" href="">Clear</button>
+        </div>
+    </form>
+</center>
+</div>
+
+
+
+
+<div class="wrapper col7">
+    <div id="copyright">
+      <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Newserific.com</a></p>
+      <p class="fl_right">@<a target="_blank" href="http://www.os-templates.com/"
+          title="Free Website Templates">DoctorCode</a></p>
+      <br class="clear" />
+    </div>
+  </div>
+{% endblock %}
