@@ -1,6 +1,6 @@
 @charset "utf-8";
 @import url("navi.css");
-@import url("forms.css");
+@import url("formsblog.css");
 @import url("tables.css");
 
 html {
@@ -16,7 +16,7 @@ body {
     /* Use em for font size */
     font-family: Georgia, "Times New Roman", Times, serif;
     color: #E5E5E5;
-    background-color:black;
+    background-color: black;
     overflow-x: hidden;
     width: 100%;
 }
@@ -24,6 +24,49 @@ body {
 * {
     box-sizing: border-box;
 }
+
+h2{
+    color: #BFE009;
+}
+
+#formauth label{
+    color: #BFE009;
+    font-size: 1em;
+    display: block;
+    clear: right;
+    padding: 10px;
+}
+#formauth{
+    width: 50%;
+    margin: auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+#formauth input{
+    padding: 10px;
+    width: 100%;
+}
+
+.bttn{
+    padding:10px;
+    background-color:#839B05;;
+    border:1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+color:white;
+width: 200px;
+transition: 3s;}
+
+.bttn:hover{
+    background-color: white;
+    color: #BFE009;
+}
+
+
+
+
 
 .justify {
     text-align: justify;
@@ -625,7 +668,8 @@ div.wrapper h6 {
     border: 1px solid #BFE009;
     clear: left;
 }
-.para{
+
+.para {
     width: 98%;
     text-align: justify;
 }
@@ -667,7 +711,7 @@ div.wrapper h6 {
     width: 210px;
     margin: 0 40px 0 0;
     padding: 0;
-    
+
 }
 
 #footer .flickr li {
@@ -818,8 +862,8 @@ div.wrapper h6 {
     background-color: red;
 }
 
-.sampleimg{
-    height:140px;
+.sampleimg {
+    height: 140px;
     width: 190px;
 }
 
@@ -868,33 +912,34 @@ div.wrapper h6 {
     background-color: #103a56;
 }
 
-#id_title{
+#id_title {
     padding: 10px;
     width: 60%;
 }
 
 
-#bta{
-   color: #BFE009; 
-   background: none;
-   border: none;
-   font-size: medium;
-   cursor: pointer;
+#bta {
+    color: #BFE009;
+    background: none;
+    border: none;
+    font-size: medium;
+    cursor: pointer;
 }
 
 
-.viewR{
+.viewR {
     margin: auto;
     width: 60%;
 }
-.viewR p{
+
+.viewR p {
     color: #BFE009;
     font-size: medium;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
 }
 
-.viewR img{
+.viewR img {
     margin: 0;
     padding: 4px;
     border: 1px solid #BFE009;
@@ -903,7 +948,7 @@ div.wrapper h6 {
     height: 400px;
 }
 
-.watch iframe{
+.watch iframe {
     margin: 0;
     padding: 4px;
     border: 1px solid #BFE009;
@@ -918,7 +963,7 @@ div.wrapper h6 {
 @media screen and (max-width:700px) {
 
     body {
-        padding:7px;
+        padding: 7px;
 
         font-size: 0.9em;
     }
@@ -990,7 +1035,7 @@ div.wrapper h6 {
     }
 
     #header .fl_left {
-        float:left;
+        float: left;
         width: fit-content;
         margin-top: 0em;
         overflow: hidden;
@@ -1000,7 +1045,7 @@ div.wrapper h6 {
     }
 
     #time {
-        font-size:14px;
+        font-size: 14px;
         color: #BFE009;
         margin: 0px;
         padding: 0px;
@@ -1316,7 +1361,7 @@ div.wrapper h6 {
     }
 
     #footer {
-        padding:10px;
+        padding: 10px;
         margin: 0;
         width: 98%;
         justify-content: center;
@@ -1360,7 +1405,7 @@ div.wrapper h6 {
         float: none;
         width: 200px;
         margin: 0px;
-        padding:3px;
+        padding: 3px;
     }
 
     #footer .flickr li {
@@ -1377,10 +1422,10 @@ div.wrapper h6 {
         display: block;
         width: 150px;
         height: 150px;
-        margin-right:10px;
+        margin-right: 10px;
         padding: 3px;
         border: 1px solid #BFE009;
-        
+
     }
 
     #footer .last {
@@ -1609,11 +1654,12 @@ div.wrapper h6 {
         border: 1px solid #666666;
     }
 
-    .sampleimg{
-        height:150px;
-         width:98%;
+    .sampleimg {
+        height: 150px;
+        width: 98%;
     }
-    .para{
+
+    .para {
         width: 98%;
         text-align: justify;
     }
@@ -1622,8 +1668,8 @@ div.wrapper h6 {
     .formcreate {
         width: 98%;
         margin-right: auto;
-        margin-left:auto;
-    
+        margin-left: auto;
+
     }
 
     .formcreateF input {
@@ -1647,33 +1693,46 @@ div.wrapper h6 {
     .formcreateF a:hover {
         background-color: var(--hoverBuutoncolor);
     }
-    
-.viewR{
-  
-    width: 98%;
-}
-.viewR p{
-    color: #BFE009;
-    font-size: medium;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
-}
 
-.viewR img{
-    margin: 0;
-    padding: 4px;
-    border: 1px solid #BFE009;
-    height: 270px;
-    width: 98%;
-}
+    h2 {
+        font-size: 0.5em;
 
-.watch iframe{
-    margin: 0;
-    padding: 4px;
-    border: 1px solid #BFE009;
-    height: 270px;
-    width: 98%;
-}
+    }
+
+    #formauth {
+        width: 90%;
+        margin: auto;
+        display: block;
+    }
+
+
+    .viewR {
+
+        width: 98%;
+    }
+
+    .viewR p {
+        color: #BFE009;
+        font-size: medium;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+    }
+
+    .viewR img {
+        margin: 0;
+        padding: 4px;
+        border: 1px solid #BFE009;
+        height: 270px;
+        width: 98%;
+    }
+
+    .watch iframe {
+        margin: 0;
+        padding: 4px;
+        border: 1px solid #BFE009;
+        height: 270px;
+        width: 98%;
+    }
 
 
 
