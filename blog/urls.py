@@ -16,8 +16,8 @@ urlpatterns = [
         path('search',SearchMethod, name="search" ),
         path("read/<slug:slug>", details_view, name="readmore"),
         path("comment",Comments, name="comment"),
-        path("movies",Movies, name="novies"),
-        path(r"read/<str:link>", Read, name="read"),
+        path("movies",Movies, name="movies"),
+        path(r"read", Read, name="read"),
         path(r'News/', NewsCaster, name="cast"),
         path(r'create/',Create, name="create")
 ]

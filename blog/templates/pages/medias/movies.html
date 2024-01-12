@@ -10,15 +10,17 @@
     color: rgba(211, 211, 211, 0.463);
     ">Movies</h2>
 <div id="hpage_latestD">
- 
     {% for x in data %}
     <div>
         <ul>
             <li>
                 <img  style="object-fit: cover;" src="{{ x.image }}" alt="" />
-                <p class="para">{{ x.discriptions|truncatechars:150 }}</p>
-                <p class="readmore"><a href="">{{ x.title }}&raquo;</a></p>
- 
+                
+                <form method="get" action="{% url 'read' %}" style="display:block;">
+                    {% csrf_token %}
+                    <p ><button 
+                        name="home" id="bta" value="{{x.link}}">{{ x.title }}&raquo;</button></p>
+                </form>
             </li>
         </ul>
         <br class="clear" />
@@ -29,7 +31,6 @@
     <h2>nothin found on Movies</h2>
     </div>
 </center>
-
     {% endfor %}
   </div>
 </center>

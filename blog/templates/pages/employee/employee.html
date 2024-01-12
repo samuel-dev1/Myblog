@@ -8,6 +8,15 @@
 
 <center>
     <h2> Hello, {{request.user.username}} welcome back </h2>
+
+    <div style="
+    border:1px solid BFE009;
+    width:fit-content;
+    padding:3px;
+    margin:2px
+    ">
+        <h2>Amount: <b style="color: #BFE009; font-size: large; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">0.0000</b></h2>
+    </div>
     <p>~{{post.count}} total Post, 
 
         {% if post.count <= 10 %}
@@ -30,7 +39,7 @@ border-radius: 10px;
     {{profile.user.last_name}}
     {{profile.user}}
 <div>
-    <button onclick="window.location.href= '{% url 'create' %}' " class="bttn">Publish News</button>
+    <button onclick="window.location.href= '{% url 'create' %}' " class="bttn" >Publish News</button>
     <button disabled style="color:black; background-color:white" class="bttn">Chat with Agent</button>
 </div>
 

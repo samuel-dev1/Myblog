@@ -300,16 +300,15 @@ def Create(request):
     return render (request,"pages/form/upload.html",{"form":form} )
 
 
-def Read(request, link):
-    
-    # y = requests.get(movie_url).text
-    # soup = BeautifulSoup(y, 'lxml')
-    # find_p = soup.find("iframe", class_="BLOG_video_class")['src']
-    # image = soup.find('div', class_='post-body').find('a')['href']
-    # download_link = soup.find('div', class_='post-body').find('a', rel='nofollow', target='_blank')['href']
-    
-    return render(request, "pages/medias/contine.html" )
-# {"find_p": find_p, "image": image, "download": download_link}
+def Read(request):
+    req = request.GET.get('home')  
+    y = requests.get(req).text
+    soup = BeautifulSoup(y, 'html.parser')
+    find_p = soup.find("iframe", class_="BLOG_video_class")['src']
+    image = soup.find('div', class_='post-body').find('a')['href']
+    download_link = soup.find('div', class_='post-body').find('a', rel='nofollow', target='_blank')['href']
+    return render(request, "pages/medias/contine.html" , {"find_p": find_p, "image": image, "download": download_link})
+
 
 
 
