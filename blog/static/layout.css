@@ -957,7 +957,41 @@ div.wrapper h6 {
     height: 400px;
 }
 
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the background color and opacity */
+    color: #fff;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
 
+  .image-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  .image-container:hover img {
+    transform: scale(360); /* Change the scale factor for your desired zoom level */
+  }
+  .image-container:hover .overlay {
+    opacity: 1;
+  }
 
 
 @media screen and (max-width:700px) {

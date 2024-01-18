@@ -15,7 +15,6 @@
     padding:3px;
     margin:2px
     ">
-        <h2>Amount: <b style="color: #BFE009; font-size: large; font-weight: bold; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">0.0000</b></h2>
     </div>
     <p>~{{post.count}} total Post, 
 
@@ -30,11 +29,21 @@
     {% for i in daily %}
     <marquee>{{i.message|upper}}</marquee>
     {% endfor %}
+<div class="image-container">
+
 <img style="
 border: 1px solid #BFE009;
 object-fit: cover;
 border-radius: 10px;
-" height="150" width="150" src="{{profile.profile_picture.url }}" />
+" height="150" width="150" src="{{profile.profile_picture.url}}" />
+<div class="overlay">
+    <p>{{profile.account}}</p>
+<p>Opay only!</p>
+
+<a href="" onclick="alert('please contact admin')">Edit</a>
+</div>
+
+</div>
     {{profile.user.first_name}}
     {{profile.user.last_name}}
     {{profile.user}}
@@ -59,8 +68,7 @@ border-radius: 10px;
 </ui>
 <div>
     Please kindly verify your daily task by clicking 
-    
-    <button class="bttn">Here</button>
+    <button class="bttn" onclick="window.location.href='mailto:samuelyyyy257@gmail.com'" >Here</button>
 </div>
 <p style="color:red ;">Click on your profile to edit your details</p>
 </center>
@@ -73,6 +81,20 @@ border-radius: 10px;
       <br class="clear" />
     </div>
   </div>
+  <script>
+
+
+    const date = new Date();
+      const year = date.getFullYear();
+      const month = date.toLocaleString('en-US', {month:'short'})
+      const day = date.getDate();
+      const hour =  date.getHours();
+      const minute = date.getMinutes();
+      const secound = date.getSeconds();
+      const amOrPm =hour >= 12 ? "PM" : "AM";
+    const yo = document.getElementById("best")
+    yo.innerText = `${month} ${day}, ${year}`
+  </script>
 {% endblock %}
 
 

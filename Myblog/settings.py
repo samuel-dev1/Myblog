@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "y4rytuhgfrewsdfghfdsewsdfg"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -52,13 +52,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': 600,
-    },
-}
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',
+#         'height': 300,
+#         'width': 600,
+#     },
+# }
 
 ROOT_URLCONF = 'Myblog.urls'
 
@@ -130,7 +130,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS =[os.path.join(BASE_DIR, 'blog/static'),]
-
 MEDIA_ROOT = os.path.join(BASE_DIR, "Media")
 MEDIA_URL = "/Media/"
 

@@ -6,7 +6,6 @@
 
 <!-- ####################################################################################################### -->
 
-
 {% block post %}
 
 <div class="wrapper col4">
@@ -17,7 +16,6 @@
         <p>{{postbanner.discriptions|truncatechars:300}}<a
             href="{% url 'readmore' postbanner.slug %}">Read more</a>.</p>
       </div>
-      
       <div id="hpage_latest">
         {% for x in posts|slice:"4" %}
         <div class="myhouse">
@@ -131,7 +129,7 @@ class="pagination-links">
     </div>
     <div class="footbox posts">
       <h2>Latest Blog Posts</h2>
-      {% for x in posts|slice:"9" %}
+      {% for x in posts|slice:"5" %}
 
       <div class="mybestgrid">
       <ul>
