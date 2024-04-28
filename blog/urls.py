@@ -2,7 +2,7 @@
 from django.urls import path
 from .views import BlogHome, Entertaiment, Sport, Politics, Education, SearchMethod
 from .views import details_view, Comments, loginPage, signup, log_out, activate, password_reset_request
-from .views import Movies, Read, NewsCaster, Create
+from .views import Movies, Read, NewsCaster, Create, Music
 urlpatterns = [
       path('login/', loginPage, name="login"),
     path('logout/', log_out, name="logout"),
@@ -19,5 +19,7 @@ urlpatterns = [
         path("movies",Movies, name="movies"),
         path(r"read", Read, name="read"),
         path(r'News/', NewsCaster, name="cast"),
-        path(r'create/',Create, name="create")
+        path(r'create/',Create, name="create"),
+        path(r'music/', Music, name="music")
+        
 ]

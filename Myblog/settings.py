@@ -52,13 +52,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CKEDITOR_CONFIGS = {
-#     'default': {
-#         'toolbar': 'full',
-#         'height': 300,
-#         'width': 600,
-#     },
-# }
 
 ROOT_URLCONF = 'Myblog.urls'
 
@@ -79,7 +72,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Myblog.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

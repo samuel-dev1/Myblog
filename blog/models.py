@@ -90,8 +90,7 @@ class MoviesAndMusic(models.Model):
     pictures = models.ImageField(blank=False, upload_to="Movies")
     discription = models.TextField()
     url = models.URLField()
-    def __str__(self) -> str:
-        return self
+    
 
 
 

@@ -15,6 +15,13 @@
 </head>
 <body>
 
+  <center>
+    <div class="loaderA" id ="preloader">
+    <div class="loader" >
+    </div>
+  </div>
+  </center>
+
 <div class="overall">
     <div class="wrapper col1">
     <div id="header">
@@ -127,5 +134,17 @@
           });
       });
     </script>
+    <script>
+      var loader = document.getElementById("preloader");
+      window.addEventListener("loadstart", function(){
+      
+       })
+     
+      window.addEventListener("load", function(){
+     
+       loader.style.display ="none";
+      })
+    
+     </script>
 </body>
 </html>

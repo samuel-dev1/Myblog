@@ -10,22 +10,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <link rel="stylesheet" href="{% static 'layout.css' %}" type="text/css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
+
+  <center>
+    <div class="loaderA" id ="preloader">
+    <div class="loader" >
+    </div>
+  </div>
+  </center>
 
 <div class="overall">
     <div class="wrapper col1">
     <div id="header">
       <div class="fl_left">
-        <h1><a href="index.html">Newserific</a></h1>
+        <h1><a href="#">Newserific</a></h1>
         <p>From DoctorCode</p>
       </div>
       <div class="fl_right"><h3 id ="time"></h3></div>
       <br class="clear" />
     </div>
     </div>
-
 <div class="wrapper col2">
     <div id="topbar">
       <!-- HTML -->
@@ -47,7 +53,7 @@
           <li><a class="active" href="#">Media</a>
             <ul>
               <li><a href="{% url 'movies' %}">Movies</a></li>
-              <li><a href="#">Music</a></li>
+              <li><a href="{% url 'music'  %}">Music</a></li>
             </ul>
           </li>
           {% if request.user.is_authenticated %}
@@ -128,16 +134,29 @@
   
         links.forEach(function (link) {
             link.addEventListener("click", function () {
-                // Remove 'clicked' class from all links
+               
                 links.forEach(function (l) {
                     l.classList.remove("clicked");
-                });
-  
-                // Add 'clicked' class to the clicked link
+                });       
                 this.classList.add("clicked");
             });
         });
     });
   </script>
+
+</script>
+
+ <script>
+  var loader = document.getElementById("preloader");
+  window.addEventListener("loadstart", function(){
+  
+   })
+ 
+  window.addEventListener("load", function(){
+ 
+   loader.style.display ="none";
+  })
+
+ </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, get_list_or_404, get_object_or_404
-from .models import UpdatePost, Advertisement, Comment, DailyTask, Profile
+from .models import UpdatePost, Advertisement, Comment, DailyTask, Profile, MoviesAndMusic
 from django.db.models.query_utils import Q
 from .forms import SignUpForm, loginform, UpdateForm
 from django.contrib.auth.forms import PasswordResetForm
@@ -95,9 +95,7 @@ def loginPage(request):
     """
      for login in user -> django auth+ usercreateform
     """
-    f = loginform()
- 
-   
+    f = loginform()  
     if request.method == "POST":
         username = request.POST.get("username")
         convername = username.lower()
@@ -114,10 +112,8 @@ def loginPage(request):
         else:
             messages.error(request, "Username does exits?")
     else:
-        form = {"f": f}
+        None
     return render(request, "authpage/login.html", {"f": f})
-
-
 def signup(request):
     form = SignUpForm()
     if request.method == "POST":
@@ -250,7 +246,7 @@ def Movies(request):
     response = requests.get(url)
     if response.status_code == 200:
         soap = BeautifulSoup(response.text, 'html.parser')
-        find_text = soap.find_all("div", class_="post-filter-inside-wrap")
+        find_text = soap.find_all("div",class_="post-filter-inside-wrap")
         data = []
         for item in find_text:
             link1 = item.find("a")['href']
@@ -261,10 +257,9 @@ def Movies(request):
             entry_data = {
                 "link": link1,
                 "image": image,
-                "title":title_c
+                "title":title_c,
             }
             data.append(entry_data)
-
         paginator = Paginator(data, 6)
         page = request.GET.get('page')
         try:
@@ -275,9 +270,9 @@ def Movies(request):
             paginated_data = paginator.page(paginator.num_pages)
         return render(request, "pages/medias/movies.html", {'data': paginated_data})
     else:
-        # Handle the case when the request to the website fails
-        return render(request, "pages/error.html", {'error_message': 'Failed to fetch data from the website'})
-
+        return render(request, "pages/error.html", {'error_message': 'Failed to fetch data Error'})
+def Music(request):
+    return render(request, "pages/error.html",{'error_message': 'Status="500"'})
 @login_required
 def NewsCaster(request):
     dailytask = DailyTask.objects.all()
