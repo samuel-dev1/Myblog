@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 from ckeditor.fields import RichTextField
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
@@ -46,7 +44,9 @@ class UpdatePost(models.Model):
         ),
         ('Politics',"Politics"),
         ("Sport","Sport"),
-        ("Entertainmnt","Entertaiment" )
+        ("Entertaiment","Entertaiment"),
+         ("Technolology","Technolology") ,
+         ("Jobs","Jobs")
         )
     title = models.CharField(max_length= 150)
     image =  models.ImageField(blank= False, upload_to = "Media")
