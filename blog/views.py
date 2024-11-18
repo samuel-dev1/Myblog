@@ -105,11 +105,12 @@ class SearchDb (generics.ListAPIView):
 class Movies(generics.ListAPIView):
     def get(self, request, *kwargs, **args):
         url = "https://www.fzmovies.ng/"
+        data = []
         response = requests.get(url)
         if response.status_code == 200:
             soap = BeautifulSoup(response.text, 'html.parser')
             find_text = soap.find_all("div",class_="post-filter-inside-wrap")
-            data = []
+           
             for item in find_text:
                 link1 = item.find("a")['href']
                 image = item.find('img')['src']

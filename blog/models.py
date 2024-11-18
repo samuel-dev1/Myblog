@@ -34,6 +34,7 @@ def update_user_profile(sender, instance, created, **kwargs):
         t_to_str = str(t)
         Profile.objects.create(user=instance, slug=t_to_str)
     instance.profile.save()
+    
 class UpdatePost(models.Model):
     category = (
         (
